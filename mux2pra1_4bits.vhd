@@ -4,15 +4,15 @@ use IEEE.std_logic_arith.all;
 use IEEE.std_logic_unsigned.all;
 
 entity mux2pra1_4bits is port (
-    S     : in  std_logic;
-    L0, L1: in  std_logic_vector(3 downto 0);
-    D     : out std_logic_vector(3 downto 0));
-end Mux2_1x4;
+    sel    : in  std_logic;
+    x, y: in  std_logic_vector(3 downto 0);
+    saida   : out std_logic_vector(3 downto 0));
+end mux2pra1_4bits;
         
 architecture arqdtp of mux2pra1_4bits is
     begin
     
-     D <=  L0   when s <= '0' else
-		   L1;	
+     saida <=  x  when sel <= '0' else
+		   y;	
 		   
 end arqdtp;
