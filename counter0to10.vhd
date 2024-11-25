@@ -3,7 +3,6 @@ use ieee.std_logic_1164.all;
 use ieee.std_logic_unsigned.all; 
 use ieee.std_logic_arith.all;
 
-
 entity counter0to10 is
 port(
     Enable, Reset, CLOCK: in std_logic;
