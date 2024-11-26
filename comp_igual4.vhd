@@ -4,8 +4,8 @@ use IEEE.std_logic_arith.all;
 use ieee.std_logic_unsigned.all;
 
 entity comp_igual4 is
-    Port (soma   : in  STD_LOGIC_VECTOR(3 downto 0); -- Entrada de 4 bits
-          status : out STD_LOGIC                     -- Saída, 1 quando soma = 4
+    Port (soma   : in  std_logic_vector(3 downto 0); -- Entrada de 4 bits
+          status : out std_logic                     -- Saída, 1 quando soma = 4
           );
 end comp_igual4;
 
