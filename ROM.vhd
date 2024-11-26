@@ -1,5 +1,4 @@
 -- Armazena as opções das sequências, dependendo no valor que for escolhido, será escolhida uma sequência aleatória, que deve ser preenchida pelo aluno
-
 -----------------------------------
 library ieee;
 use ieee.std_logic_1164.all;
@@ -13,21 +12,22 @@ architecture Rom_Arch of ROM is
   type memory is array (00 to 15) of std_logic_vector(9 downto 0);
   constant my_Rom : memory := (
 	00 => "0001010101",
-	01 => "",
-   	02 => "",
-	03 => "",
-	04 => "",
-	05 => "",
-	06 => "",
-	07 => "",
-	08 => "",
-	09 => "",
-	10 => "",
-	11 => "",
-	12 => "",
-	13 => "",
-	14 => "",
-	15 => "");
+	01 => "0011001100", -- 4 "1"s
+    	02 => "1100000011", -- 4 "1"s
+    	03 => "1010100100", -- 4 "1"s
+    	04 => "0001110001", -- TODOS tem 4 números '1'
+    	05 => "0101010010", 
+    	06 => "1001100110", 
+    	07 => "0011110000", 
+    	08 => "0110001101", 
+    	09 => "1011000010", 
+    	10 => "1000111000", 
+    	11 => "0110011001", 
+    	12 => "1110000010", 
+    	13 => "0100101010", 
+    	14 => "0001010110", 
+    	15 => "1100101000"  
+	);
 begin
    process (address)
    begin
