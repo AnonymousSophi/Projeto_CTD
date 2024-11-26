@@ -43,7 +43,6 @@ begin
     
     end_time <= '1' when count = 0 else '0';
 
-    
     tempo <= std_logic_vector(count); -- Converte count p/ std_logic_vector
 
 end arqtime;
