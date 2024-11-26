@@ -27,20 +27,20 @@ architecture arc of datapath is
 -------------------DIVISOR DE FREQUENCIA------------------------
 
 component Div_Freq is
-	port (	    clk: in std_logic;
-				reset: in std_logic;
-				CLK_1Hz: out std_logic
-			);
+	port (clk: in std_logic;
+	      reset: in std_logic;
+	      CLK_1Hz: out std_logic
+	      );
 end component;
 
 ------------------------CONTADORES------------------------------
 
 component counter_time is
 port(Enable, Reset, CLOCK: in std_logic;
-		load: in std_logic_vector(3 downto 0);
-		end_time: out std_logic;
-		tempo: out std_logic_vector(3 downto 0)
-		);
+     load: in std_logic_vector(3 downto 0);
+     end_time: out std_logic;
+     tempo: out std_logic_vector(3 downto 0)
+      );
 end component;
 
 component counter0to10 is
@@ -87,55 +87,48 @@ end component;
 
 ---------------------MULTIPLEXADORES----------------------------
 
-
 component mux2pra1_4bits is
-port(
-    sel: in std_logic;
-	x, y: in std_logic_vector(3 downto 0);
-	saida: out std_logic_vector(3 downto 0)
-    );
+port(sel: in std_logic;
+     x, y: in std_logic_vector(3 downto 0);
+     saida: out std_logic_vector(3 downto 0)
+     );
 end component;
 
 component mux2pra1_7bits is
 port (sel: in std_logic;
-		x, y: in std_logic_vector(6 downto 0);
-		saida: out std_logic_vector(6 downto 0)
-);
+      x, y: in std_logic_vector(6 downto 0);
+      saida: out std_logic_vector(6 downto 0)
+      );
 end component;
 
 component mux2pra1_8bits is
-port(
-    sel: in std_logic;
-	x, y: in std_logic_vector(7 downto 0);
-	saida: out std_logic_vector(7 downto 0)
-    );
+port (sel: in std_logic;
+      x, y: in std_logic_vector(7 downto 0);
+      saida: out std_logic_vector(7 downto 0)
+      );
 end component;
 
 component mux2pra1_10bits is
-port(
-    sel: in std_logic;
-	x, y: in std_logic_vector(9 downto 0);
-	saida: out std_logic_vector(9 downto 0)
-    );
+port (sel: in std_logic;
+      x, y: in std_logic_vector(9 downto 0);
+      saida: out std_logic_vector(9 downto 0)
+      );
 end component;
 
 ----------------------DECODIFICADOR-----------------------------
-
 component decod7seg is
-port(
-    X: in std_logic_vector(3 downto 0);
-    Y: out std_logic_vector(6 downto 0)
-    );
+port(X: in std_logic_vector(3 downto 0);
+     Y: out std_logic_vector(6 downto 0)
+     );
 end component;
 
 -------------------COMPARADORES E SOMA--------------------------
 
 component comp is
-port (
-    seq_user: in std_logic_vector(9 downto 0);
-    seq_reg: in std_logic_vector(9 downto 0);
-    seq_mask: out std_logic_vector(9 downto 0)
-    );
+port(seq_user: in std_logic_vector(9 downto 0);
+     seq_reg: in std_logic_vector(9 downto 0);
+     seq_mask: out std_logic_vector(9 downto 0)
+     );
 end component;
 
 component comp_igual4 is
