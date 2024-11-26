@@ -28,7 +28,6 @@ begin
             EA <= PE;       -- Avança para o próximo estado
         end if;
     end process;
-
     
     -- Define próx estado e saídas
     
