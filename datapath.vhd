@@ -27,20 +27,20 @@ architecture arc of datapath is
 -------------------DIVISOR DE FREQUENCIA------------------------
 
 component Div_Freq is
-	port (clk: in std_logic;
-	      reset: in std_logic;
-	      CLK_1Hz: out std_logic
-	      );
+	port (	    clk: in std_logic;
+				reset: in std_logic;
+				CLK_1Hz: out std_logic
+			);
 end component;
 
 ------------------------CONTADORES------------------------------
 
 component counter_time is
 port(Enable, Reset, CLOCK: in std_logic;
-     load: in std_logic_vector(3 downto 0);
-     end_time: out std_logic;
-     tempo: out std_logic_vector(3 downto 0)
-      );
+		load: in std_logic_vector(3 downto 0);
+		end_time: out std_logic;
+		tempo: out std_logic_vector(3 downto 0)
+		);
 end component;
 
 component counter0to10 is
@@ -87,48 +87,55 @@ end component;
 
 ---------------------MULTIPLEXADORES----------------------------
 
+
 component mux2pra1_4bits is
-port(sel: in std_logic;
-     x, y: in std_logic_vector(3 downto 0);
-     saida: out std_logic_vector(3 downto 0)
-     );
+port(
+    sel: in std_logic;
+	x, y: in std_logic_vector(3 downto 0);
+	saida: out std_logic_vector(3 downto 0)
+    );
 end component;
 
 component mux2pra1_7bits is
 port (sel: in std_logic;
       x, y: in std_logic_vector(6 downto 0);
       saida: out std_logic_vector(6 downto 0)
-      );
+);
 end component;
 
 component mux2pra1_8bits is
-port (sel: in std_logic;
-      x, y: in std_logic_vector(7 downto 0);
-      saida: out std_logic_vector(7 downto 0)
-      );
+port(
+    sel: in std_logic;
+	x, y: in std_logic_vector(7 downto 0);
+	saida: out std_logic_vector(7 downto 0)
+    );
 end component;
 
 component mux2pra1_10bits is
-port (sel: in std_logic;
-      x, y: in std_logic_vector(9 downto 0);
-      saida: out std_logic_vector(9 downto 0)
-      );
+port(
+    sel: in std_logic;
+	x, y: in std_logic_vector(9 downto 0);
+	saida: out std_logic_vector(9 downto 0)
+    );
 end component;
 
 ----------------------DECODIFICADOR-----------------------------
+
 component decod7seg is
-port(X: in std_logic_vector(3 downto 0);
-     Y: out std_logic_vector(6 downto 0)
-     );
+port(
+    X: in std_logic_vector(3 downto 0);
+    Y: out std_logic_vector(6 downto 0)
+    );
 end component;
 
 -------------------COMPARADORES E SOMA--------------------------
 
 component comp is
-port(seq_user: in std_logic_vector(9 downto 0);
-     seq_reg: in std_logic_vector(9 downto 0);
-     seq_mask: out std_logic_vector(9 downto 0)
-     );
+port (
+    seq_user: in std_logic_vector(9 downto 0);
+    seq_reg: in std_logic_vector(9 downto 0);
+    seq_mask: out std_logic_vector(9 downto 0)
+    );
 end component;
 
 component comp_igual4 is
@@ -163,11 +170,16 @@ DIV: Div_Freq port map (CLOCK_50, R2, clk_1); -- Para teste no emulador, comenta
 
 ------------------------CONTADORES------------------------------
 
--- a fazer pel@ alun@
+COUNTERTIME: counter_time port map (E2, R1, clk_1, end_time, tempo);
+
+CONTER0TO10: counter0to10 port map (E3, R2, clk_1, Round, end_round,);
 
 -------------------ELEMENTOS DE MEMORIA-------------------------
 
--- a fazer pel@ alun@
+--REG4BITS: reg4bits port map (CLOCK_50, );-- ??????
+REG8BITS: reg8bit port map (CLOCK_50, R2, E1, SW(7 downto 0), ); -- como faz a saída desses?
+REG10BIT: reg10bits port map (CLOCK_50, R2, E2, SW(9 downto 0), ); -- '''
+ROM0: ROM port map (Level_code, CODE);
 
 ---------------------MULTIPLEXADORES----------------------------
 
