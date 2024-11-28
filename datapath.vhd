@@ -167,7 +167,6 @@ begin
 
             ----------------------------------------
                 ---- TODOS OS PORT MAP ----
-            ----------------------------------------
 
 ------------------------DIVISOR FREQ------------------------------
 
@@ -181,8 +180,8 @@ COUNTER_0_TO_10: counter0to10 port map (E3, R2, clk_1, Round, end_round);
 
 -------------------ELEMENTOS DE MEMORIA-------------------------
 
---REG4BITS: reg4bits port map (CLOCK_50, R2, );     			    -------------- ???
-REG8BITS_1: reg8bits port map (CLOCK_50, R2, E1, SW(7 downto 0), );         ------------- FALTA A SAÍDA!!
+--REG4BITS: reg4bits port map (CLOCK_50, R2, );                             ------------- ???
+REG8BITS_1: reg8bits port map (CLOCK_50, R2, E1, SW(7 downto 0), Saida_reg8bits);
 REG8BITS_2: reg8bits port map (CLOCK_50, R2, (E5 or E4), MuxSelDig, valorfin_vector);
 REG10BITS: reg10bits port map (CLOCK_50, R2, E2, SW(9 downto 0), ComparaSelDig); 
 ROM0: ROM port map (Level_code, SelecionadaROM);
@@ -228,11 +227,20 @@ SOMA_seldig: soma port map (ComparaSelDig, SomaSelDig);
 DEC7SEG_hex4: decod7seg port map (CounterTMux, decMux4);
 DEC7SEG_hex2_1: decod7seg port map (Round, decMuxRound);
 DEC7SEG_hex2_2: decod7seg port map (Level_code, decMuxCode);
-DEC7SEG_hex1: decod7seg port map (, decHEX1);            ------------- FALTAM AS
-DEC7SEG_hex0: decod7seg port map (, decHEX0);            ------------- ENTRADAS!!
+DEC7SEG_hex1: decod7seg port map (dec_hex_1, decHEX1);
+DEC7SEG_hex0: decod7seg port map (dec_hex_0, decHEX0);
 
 ---------------------ATRIBUICOES DIRETAS---------------------
 
--- a fazer pel@ alun@
+-- Divisão saída reg8bits #1
+
+Level_time <= Saida_reg8bits(3 downto 0); -- LSB saída
+Level_code <= Saida_reg8bits(7 downto 4); -- MSB saída
+
+-- Divisão saída reg8bits #2
+
+dec_hex_1 <= valorfin_vector(7 downto 4); -- MSB (1° dec7seg)
+dec_hex_0 <= valorfin_vector(3 downto 0); -- LSB (2° dec7seg)
+
 
 end arc;
